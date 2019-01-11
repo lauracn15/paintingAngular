@@ -18,8 +18,11 @@ import {
   from '@angular/material';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
+import { AboutComponent } from './components/about/about.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes = [
+  { path: 'home', component: HomeComponent },
   { path: 'register', component: RegistrationComponent},
   { path: 'login', component: LoginComponent},
   { path: '**', component: RegistrationComponent }
@@ -30,7 +33,9 @@ const routes = [
     AppComponent,
     HeaderComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    AboutComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
