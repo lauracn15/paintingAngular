@@ -14,32 +14,48 @@ import {
   MatToolbarModule,  
   MatButtonModule, 
   MatFormFieldModule,
-  MatInputModule}
+  MatInputModule,
+  MatTableModule}
   from '@angular/material';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
-import { AboutComponent } from './components/about/about.component';
+import { PaintingService } from './services/painting.service';
+import { PaintingIndexComponent } from './components/painting/painting-index/painting-index.component';
+import { PaintingCreateComponent } from './components/painting/painting-create/painting-create.component';
+import { PaintingDetailComponent } from './components/painting/painting-detail/painting-detail.component';
 import { HomeComponent } from './components/home/home.component';
-import { PaintingsComponent } from './components/paintings/paintings.component';
+import { PaintingEditComponent } from './components/painting-edit/painting-edit.component';
+import { PaintingDeleteComponent } from './components/painting/painting-delete/painting-delete.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes = [
   { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'register', component: RegistrationComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'paintings', component: PaintingsComponent},
-
-  { path: '**', component: RegistrationComponent }
+  { path: 'painting', canAvtivate: [AuthGuard], children: [
+     {path: '', component: PaintingIndexComponent},
+     { path: 'create', component: PaintingCreateComponent},
+     { path: 'detail/:id', component: PaintingDetailComponent},
+     { path: 'delete/:id', component: PaintingDeleteComponent}
+    ]},
+  { path: '**', component: HomeComponent }
 ];
   
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    HomeComponent,
     RegistrationComponent,
     LoginComponent,
     AboutComponent,
     HomeComponent,
-    PaintingsComponent,
+    PaintingIndexComponent,
+    PaintingCreateComponent,
+    PaintingDetailComponent,
+    PaintingEditComponent,
+    PaintingDeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -52,10 +68,13 @@ const routes = [
     MatToolbarModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    PaintingService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
  
