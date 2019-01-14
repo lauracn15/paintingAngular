@@ -20,11 +20,14 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
+import { PaintingsComponent } from './components/paintings/paintings.component';
 
 const routes = [
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegistrationComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'paintings', component: PaintingsComponent},
+
   { path: '**', component: RegistrationComponent }
 ];
   
@@ -36,6 +39,7 @@ const routes = [
     LoginComponent,
     AboutComponent,
     HomeComponent,
+    PaintingsComponent,
   ],
   imports: [
     BrowserModule,
