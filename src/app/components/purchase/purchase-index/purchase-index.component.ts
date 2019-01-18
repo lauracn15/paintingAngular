@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PurchaseService } from 'src/app/services/purchase.service';
 import { MatTableDataSource } from '@angular/material';
 import { Purchase } from 'src/app/models/Purchase'
-import { Painting } from 'src/app/models/Painting';
-import { PaintingService } from 'src/app/services/painting.service'
-import { DataSource } from '@angular/cdk/table';
+
 
 @Component({
   selector: 'app-purchase-index',
@@ -12,10 +10,10 @@ import { DataSource } from '@angular/cdk/table';
   styleUrls: ['./purchase-index.component.css']
 })
 export class PurchaseIndexComponent implements OnInit {
-  constructor(private _purchaseService: PurchaseService, private _paintingService: PaintingService) { }
+  constructor(private _purchaseService: PurchaseService) { }
   
 
-  columnNames = ['details', 'StreetAddress', 'AptNumber', 'City', 'State', 'Zip', 'BuyerEmail'];
+  columnNames = ['details', 'Title', 'Price', 'BuyerName', 'BuyerEmail', 'StreetAddress', 'AptNumber', 'City', 'State', 'Zip'];
   dataSource: MatTableDataSource<Purchase>
 
   
@@ -25,5 +23,3 @@ export class PurchaseIndexComponent implements OnInit {
     });
   }
 }
-
-

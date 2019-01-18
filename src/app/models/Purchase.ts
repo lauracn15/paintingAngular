@@ -1,10 +1,14 @@
 export interface Purchase {
-    PaintingEntityId: number;
-    PurchaseId: number;
+    Title: string;
+    Price: number;
+    BuyerName: string;
+    BuyerEmail: string;
     StreetAddress: string;
     AptNumber?: string;
     City: string;
     State: string;
     Zip: number;
-    BuyerEmail: string;
+    PurchaseId: number;
+    PurchaseDate: Date;
+    
 }

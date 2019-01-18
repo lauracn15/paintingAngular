@@ -1,18 +1,39 @@
-<app-header></app-header>
 <h1>All Your Sales, Girl!</h1>
 <hr>
+
 <div>
   <mat-table #table [dataSource]="dataSource">
     <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
     <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
 
+    <ng-container matColumnDef="Title">
+      <mat-header-cell *matHeaderCellDef class="matColumnSize">Title</mat-header-cell>
+      <mat-cell *matCellDef="let purchase">{{purchase.title}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Price">
+      <mat-header-cell *matHeaderCellDef class="matColumnSize">Price</mat-header-cell>
+      <mat-cell *matCellDef="let purchase">{{purchase.price}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="BuyerName">
+      <mat-header-cell *matHeaderCellDef class="matColumnSize">Name</mat-header-cell>
+      <mat-cell *matCellDef="let purchase">{{purchase.buyerName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="BuyerEmail">
+      <mat-header-cell *matHeaderCellDef class="matColumnSize">Email</mat-header-cell>
+      <mat-cell *matCellDef="let purchase"> {{purchase.buyerEmail}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="PurchaseDate">
+      <mat-header-cell *matHeaderCellDef class="matColumnSize">Purchase Date</mat-header-cell>
+      <mat-cell *matCellDef="let purchase">{{purchase.purchaseDate}} </mat-cell>
+    </ng-container>
     <ng-container matColumnDef="StreetAddress">
-      <mat-header-cell *matHeaderCellDef class="matColumnSize">Street Address</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef class="matColumnSize">Address</mat-header-cell>
       <mat-cell *matCellDef="let purchase">{{purchase.streetAddress}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="AptNumber">
-      <mat-header-cell *matHeaderCellDef class="matColumnSize">Apt Number</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef class="matColumnSize">Apt #</mat-header-cell>
       <mat-cell *matCellDef="let purchase">{{purchase.aptNumber}}</mat-cell>
     </ng-container>
 
@@ -29,10 +50,6 @@
       <mat-header-cell *matHeaderCellDef class="matColumnSize">Zip</mat-header-cell>
       <mat-cell *matCellDef="let purchase"> {{purchase.zip}} </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="BuyerEmail">
-      <mat-header-cell *matHeaderCellDef class="matColumnSize">Email</mat-header-cell>
-      <mat-cell *matCellDef="let purchase"> {{purchase.buyerEmail}} </mat-cell>
-    </ng-container>
     <ng-container matColumnDef="details">
       <mat-header-cell *matHeaderCellDef class="matColumnSize">Details</mat-header-cell>
       <mat-cell *matCellDef="let purchase" routerLink="/purchase/detail/{{purchase.purchaseId}}">
@@ -42,9 +59,9 @@
   </mat-table>
 </div>
 
-    <ng-container matColumnDef="buttons">
-      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
-      <mat-cell *matCellDef="let purchase">
-        <i class="material-icons" routerLink="/purchase/delete/{{purchase.purchaseId}}"> delete </i>
-      </mat-cell>
-    </ng-container>
+<ng-container matColumnDef="buttons">
+  <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+  <mat-cell *matCellDef="let purchase">
+    <i class="material-icons" routerLink="/purchase/delete/{{purchase.purchaseId}}"> delete </i>
+  </mat-cell>
+</ng-container>
