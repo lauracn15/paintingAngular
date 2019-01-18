@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PaintingService } from '../../../services/painting.service';
-import { Painting } from '../../../models/painting';
+import { Painting } from '../../../models/Painting';
 import { MatTableDataSource } from '@angular/material';
 
 @Component({
@@ -13,7 +13,7 @@ export class PaintingIndexComponent implements OnInit {
   constructor(private _paintingService: PaintingService) { }
 
   ngOnInit() {
-    this._paintingService.getPainting().subscribe((painting: Painting[]) => {
+    this._paintingService.getPaintings().subscribe((painting: Painting[]) => {
       this.dataSource = new MatTableDataSource<Painting>(painting);
     });
   }
